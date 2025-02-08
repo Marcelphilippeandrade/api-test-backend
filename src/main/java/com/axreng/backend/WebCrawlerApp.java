@@ -4,8 +4,6 @@ import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
 
-import java.util.Map;
-
 import com.axreng.backend.dto.SearchRequestDTO;
 import com.axreng.backend.dto.SearchResponseDTO;
 import com.axreng.backend.service.SearchService;
@@ -26,7 +24,7 @@ public class WebCrawlerApp {
 			SearchResponseDTO response = searchService.startSearch(request);
 
 			res.status(response.getStatusCode());
-			return gson.toJson(Map.of("id", response.getId()));
+			return gson.toJson(response);
 		});
 
 		get("/crawl/:id", (req, res) -> {

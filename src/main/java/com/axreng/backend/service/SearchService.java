@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 import com.axreng.backend.dto.SearchRequestDTO;
 import com.axreng.backend.dto.SearchResponseDTO;
-import com.axreng.backend.util.SearchTask;
+import com.axreng.backend.task.SearchTask;
 
 public class SearchService {
 	private static final String BASE_URL = System.getenv("BASE_URL");

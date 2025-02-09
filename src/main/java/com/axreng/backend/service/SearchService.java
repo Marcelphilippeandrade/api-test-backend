@@ -18,7 +18,7 @@ public class SearchService {
 
 	public SearchResponseDTO startSearch(SearchRequestDTO request) {
 		if (request.getKeyword() == null || request.getKeyword().length() < 4 || request.getKeyword().length() > 32) {
-			return new SearchResponseDTO(null, "error", Collections.emptyList(), 400);
+			return new SearchResponseDTO(null, "Error. A palavra-chave deve ter entre 4 e 32 caracteres.", Collections.emptyList(), 400);
 		}
 
 		String id = UUID.randomUUID().toString().replaceAll("[^a-zA-Z0-9]", "").substring(0, 8);
@@ -32,7 +32,7 @@ public class SearchService {
 	public SearchResponseDTO getSearchResult(String id) {
 		SearchTask task = searches.get(id);
 		if (task == null) {
-			return new SearchResponseDTO(null, "not found", Collections.emptyList(), 404);
+			return new SearchResponseDTO(null, "Error. Pesquisa não encontrada.", Collections.emptyList(), 404);
 		}
 		return new SearchResponseDTO(task.getId(), task.getStatus(), task.getUrls(), 200);
 	}

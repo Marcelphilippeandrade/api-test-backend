@@ -37,13 +37,10 @@ public class SearchTask implements Runnable {
 		crawl(baseUrl);
 		status = "done";
 		
-		long memoryAfter = runtime.totalMemory() - runtime.freeMemory();
-        long memoryUsed = (memoryAfter - memoryBefore) / (1024 * 1024);
         long endTime = System.nanoTime();
         long duration = (endTime - startTime) / 1_000_000;
         
         System.out.println("⏳ Tempo de execução: " + duration + " ms");
-        System.out.println("💾 Memória utilizada: " + memoryUsed + " MB");
 	}
 
 	private void crawl(String startUrl) {
